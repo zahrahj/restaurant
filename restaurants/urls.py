@@ -1,7 +1,8 @@
-from django.contrib import admin
-from django.urls import path
 
+from django.contrib import admin
+from django.urls import path, include
 from restaurants import views
+
 # this is a urls page
 
 urlpatterns = [
@@ -11,8 +12,5 @@ urlpatterns = [
     path('update/<int:restaurant_id>/', views.restaurant_update, name= "restaurant_update"),
     path('delete/<int:restaurant_id>/', views.restaurant_delete, name= "restaurant_delete"),
     path('create/', views.restaurant_create, name= "restaurant_create"),
-
-
-
 
 ]

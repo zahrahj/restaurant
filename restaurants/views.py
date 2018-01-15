@@ -7,7 +7,7 @@ from .forms import RestaurantForm
 
 # Create your views here.
 def restaurant_list (resquest):
-	objects = Restaurant.objects.all()
+	objects = Restaurant.objects.all().order_by('name')
 
 	context = {
 	"objects" : objects
@@ -29,8 +29,10 @@ def restaurant_detail (resquest, restaurant_id):
 
 
 def restaurant_create(request):
-	form =RestaurantForm(request.POST or None)
+	form =RestaurantForm(request.POST or None, request.FILES or None)
 	if form.is_valid():
+		acrticle = form.save(commit=False)
+		article.save()
 
 		form.save()
 
@@ -44,6 +46,7 @@ def restaurant_create(request):
 
 
 
+
 def restaurant_update(request,restaurant_id):
 
 	item = Restaurant.objects.get(id= restaurant_id)
@@ -51,8 +54,7 @@ def restaurant_update(request,restaurant_id):
 
 	if request.method == "POST":
 
-		form = RestaurantForm(request.POST or None, instance = item)
-
+		form = RestaurantForm(request.POST or None, request.FILES or None, instance = item)
 		
 		if form.is_valid():
 			form.save()

@@ -8,5 +8,13 @@
 {{restaurant.name}}
 
 
+{% if restaurant.logo %}
+				<div class="card" style="width: 18rem;">
+
+				<img class= "card-img-top" src="{{restaurant.logo.url}}" alt="Article image">
+	
+				</div>
+	{% endif %}
+
 </body>
 </html>

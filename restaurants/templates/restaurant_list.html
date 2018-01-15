@@ -8,7 +8,7 @@
 
 {% for wow in objects %}
 
-	<a href="{% url 'detail' restaurant_id=wow.id %}" ><h1> {{wow.name}} </h1></a>
+	<a href="{% url 'detail' restaurant_id=wow.id %}" ><h1> {{wow.name}} {{wow.logo}}</h1></a>
 
 {% endfor %}
 </body>
